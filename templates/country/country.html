@@ -1,0 +1,21 @@
+{% extends "../base.html" %}
+{% block contents %}
+<!-- 국가명이 있을 경우 그래프와 테이블을 보여준다.-->
+
+{% if countryName %}
+
+<h2>{{ countryName }}의 연도별 출국자수</h2>
+{% include "dashboard.html" %}
+
+<!-- 국가명이 없을 경우 자료가 없음을 알려준다..-->
+{% else %}
+
+<!-- 에러 메시지 -->
+<h2>해당 국가의 데이터베이스가 없습니다.</h2>
+
+{% endif %}
+
+{% endblock contents %}
+
+
+

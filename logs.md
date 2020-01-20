@@ -1,5 +1,8 @@
-## 2019. 1. 14.
-- 인천국제항공사 자료 수집 (박소현)
+## 2019. 1. 17.
+- 박소현 : 여행 관련 data 수집 및 정리
+- 서연주 : PPT template 검색 및 결정
+- 장원 : jvectormap 라이브러리에 링크 가능하게 연결
+- 정석원 : 대륙별 data 몽고DB에 입력
 
 ## 2019. 1. 16.
 - 월별 통계 중 한국 출입국 부분을 잘라서 몽고DB에 넣기 시도.
@@ -11,6 +14,9 @@
 ## 2019. 1. 15
 - 출입국 관광 통계 자료 수집(메인 자료 / 한국관광공사) (서연주)
 - [1984-2018년 출입국 국가별 월별통계](https://kto.visitkorea.or.kr/kor/notice/data/statis/profit/board/view.kto?id=423699&isNotice=true&instanceId=294&rnum=0)
+
+## 2019. 1. 14.
+- 인천국제항공사 자료 수집 (박소현)
 
 
 # 장고 홈페이지 제작 log 중
@@ -71,4 +77,8 @@ urlpatterns = [
     - 인터넷 검색해서 나온 html 코드를 가져옴! https://codepen.io/michaelgermini/pen/QyjrZb
 
 ### 첫 페이지 국가 클릭하면 국가별 페이지로 연결
-- 
+- jvectormap 라이브러리 수정
+
+
+## 멤버 앱 만들기
+- 기존 수업 auth부분을 사용

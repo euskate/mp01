@@ -6,6 +6,3 @@ from django.views import generic
 class HomeView(TemplateView):
 
     template_name = 'index.html'
-
-def country(request, pk):
-    return render(request, 'country.html', {'pk':pk})
