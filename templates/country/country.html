@@ -4,7 +4,7 @@
 
 {% if countryName %}
 
-<h2>{{ countryName }}의 연도별 출국자수</h2>
+<h2>{{ countryName }} 해외여행 연도별 여행객 수</h2>
 {% include "dashboard.html" %}
 
 <!-- 국가명이 없을 경우 자료가 없음을 알려준다..-->
@@ -15,6 +15,9 @@
 
 {% endif %}
 
+<script type="text/javascript">
+    var countryData = "{{ countryData }}";
+</script>
 {% endblock contents %}
 
 

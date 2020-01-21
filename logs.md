@@ -1,3 +1,12 @@
+## 2019. 1. 21.
+- jvectormap -> jqvmap으로 지도 변경
+- jqvmap의 chrome 브라우저 error문제 해결
+    - /resource/0001-Bug-Minor-revent-divide-by-0.patch.txt
+    - jquery.vmap.js 파일 수정
+- Magazine team 별도 app 프로젝트 진행 중
+- 출국자 수 mongoDB to oracleDB 연동 완료
+- 국가별 페이지 차트, 테이블 데이터 연동 완료
+
 ## 2019. 1. 20.
 - Magazine 템플릿 생성 중
 - MongoDB 데이터 전처리

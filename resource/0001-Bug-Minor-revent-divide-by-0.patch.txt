@@ -1,0 +1,40 @@
+From 70caf3286a8358c1da3f3f5e76c8c571e2839109 Mon Sep 17 00:00:00 2001
+From: Thierry Fournier <thierry.fournier@ozon.io>
+Date: Wed, 3 Oct 2018 16:32:53 +0200
+Subject: [PATCH] Bug/Minor: revent divide by 0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In some case, the map can be initialised in a 0px canvas. The JQVMap
+throws an exception like this:
+
+   jquery.vmap.min.js:10 Error: <g> attribute transform: Trailing garbage, "…0) translate(0, Infinity)".
+
+When it is initialised in a 0px canvas, the scale calculus provides a
+scale of 0. When the scale of 0 is applyed on SVG, it perform a divide
+by 0 which returns infinite. The SVG translate attribute expect number.
+It receives "Infinity".
+
+This patch prevent a scale of 0, if 0 is computed, it replaces by 1.
+---
+ dist/jquery.vmap.js | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/dist/jquery.vmap.js b/dist/jquery.vmap.js
+index caac440..9055be7 100644
+--- a/dist/jquery.vmap.js
++++ b/dist/jquery.vmap.js
+@@ -889,6 +889,9 @@ JQVMap.prototype.resize = function () {
+     this.baseScale = this.width / this.defaultWidth;
+     this.baseTransY = Math.abs(this.height - this.defaultHeight * this.baseScale) / (2 * this.baseScale);
+   }
++  if (this.baseScale === 0) {
++    this.baseScale = 1;
++  }
+   this.scale *= this.baseScale / curBaseScale;
+   this.transX *= this.baseScale / curBaseScale;
+   this.transY *= this.baseScale / curBaseScale;
+-- 
+2.10.1
+

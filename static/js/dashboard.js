@@ -3,7 +3,9 @@
 (function () {
     'use strict'
   
+    console.log('{{countryData}}')
     feather.replace()
+    window.alert('{{countryData}}')
   
     // Graphs
     var ctx = document.getElementById('myChart')
@@ -12,13 +14,25 @@
       type: 'line',
       data: {
         labels: [
-          'Sunday',
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday'
+          '2000',
+          '2001',
+          '2002',
+          '2003',
+          '2004',
+          '2005',
+          '2006',
+          '2007',
+          '2008',
+          '2009',
+          '2011',
+          '2012',
+          '2013',
+          '2014',
+          '2015',
+          '2016',
+          '2017',
+          '2018',
+          '2019',
         ],
         datasets: [{
           data: [
