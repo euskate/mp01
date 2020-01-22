@@ -1,0 +1,173 @@
+{% extends "../base.html" %}
+
+{% block head %}
+
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>환영합니다!</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    .carousel-inner > .carousel-item > img{ /* width: 640px; height: 720px; */ } </style>
+
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/carousel.css" rel="stylesheet">
+  </head>
+{% endblock head %}
+
+{% block contents %}
+  <body>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script> $('.carousel').carousel({ interval: 2000 //기본 5초 }) </script>
+
+    <header>
+    <!--요기에 상단 메뉴바 넣어쥬세요-->
+    </header>
+
+<main role="main">
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                <rect width="100%" height="100%" fill="#777"/>
+                <img src="/static/img/aaaa.jpg" />
+            </svg>
+            <div class="container">
+              <div class="carousel-caption text-left">
+            <h1>The gladdest moment in human life is a departure into unknown lands.</h1>
+            <p>-Sir Richard Burton-</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/>
+            <img src="/static/img/1111.jpg" /></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>2월 추천 여행지</h1>
+            <p>영화 주인공 따라 다니면서 겨울 순삭하기</p>
+            <p><a class="btn btn-lg btn-primary" href="/magazine/Feb" role="button">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/>
+            <img src="/static/img/9999.jpg" />
+        </svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>인천 국제공항 알고 이용하자</h1>
+            <p>나는 오늘도 인천공항에서 길을 잃었지...라고 인스타에 올리지 말고 인천공항 뽕뽑아 먹자! 공항아용 꿀팁 대방출!</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <div style="height:100px">
+          <img src="/static/img/qwe.png" />
+        </div>
+        <h2>2020 여행 트랜드</h2>
+        <p>여행 인싸라면, 여행 힙스터를 꿈꾼다면 놓칠 수 없는 다른 2020년 여행트렌드 코너입니다!! 어떤 여행지가 있을까요?</p>
+        <p><a class="btn btn-secondary" href="/magazine/main1" role="button">View details &raquo;</a></p>
+        
+      </div><!-- /.col-lg-4 -->
+      
+      <div class="col-lg-4">
+        <div style="height:100px">
+          <img src="/static/img/gggg.png" />
+        </div>
+
+        <h2>통계로 보는 여행 트랜드</h2>
+        <p>여행에도 트랜드가 있다! 2000년대부터 지금까지의 여행 트렌드! 패키지 vs 자유여행 승자는 누구?(-두둥)<p>
+        <p><a class="btn btn-secondary" href="/magazine/main3" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+
+      <div class="col-lg-4">
+        <div style="height:100px">
+          <img src="/static/img/hhhh.png"/>
+      </div>  
+        <h2>이달의 여행</h2>
+        <p>추울 겨울 마음을 따듯하게 녹여줄 2월 여행지에 대해 함께 알아볼까요? 2월에 가면 좋을 추천 여행지를 확인 할 수 있습니다!</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">겨울 왕국 특집 <br> <span class="text-muted">엘사님의 나라, 노르웨이로!</span></h2><br>
+        <h4><p class="lead"><p><span class="se-ff-nanumgothic se-fs15 __se-node" style="color: rgb(0, 216, 255);">엘사 여왕님</span>께 큰절부터 올리고 시작하겠습니다!</p><p>대한민국은 바야흐로 <u>겨울왕국 앓이 중</u>, "겨울왕국"</p> <p>보는걸로 만족하지 말고 직접 온 몸으로 만끽하고 싶지</p><p>않으신가요?! 겨울왕국 처돌이들 여기여기 붙어라!!</p> <p style="color: rgb(34, 116, 28);">여권챙겨 여행들어간다~</p></h4>
+        <br><p><a class="btn btn-secondary" href="/magazine/main2" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-5">
+        <img src="/static/img/very good.jpg" />
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+
+
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+{% endblock contents %}
+

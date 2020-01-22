@@ -28,6 +28,8 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/static/css/blog.css" rel="stylesheet">
+    {% block head %}
+    {% endblock head %}
   </head>
   
   
@@ -60,7 +62,7 @@
       <a class="p-2 text-muted" href="/country/america">America</a>
       <a class="p-2 text-muted" href="/country/oceania">Oceania</a>
       <a class="p-2 text-muted" href="/country/africa">Africa</a>
-      <a class="p-2 text-muted" href="/country/magazine">Magazine</a>
+      <a class="p-2 text-muted" href="/magazine/index">Magazine</a>
       {% comment %} <a class="p-2 text-muted" href="#">Opinion</a>
       <a class="p-2 text-muted" href="#">Science</a>
       <a class="p-2 text-muted" href="#">Health</a>
@@ -227,10 +229,12 @@
 
 <footer class="blog-footer">
 {% block footer %}
-  <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+  <p>Bigdata Season 2<br>Project Team 2</p>
+  <p><a href="#">Back to top</a></p>  
+  <!-- <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
   <p>
     <a href="#">Back to top</a>
-  </p>
+  </p> -->
 {% endblock footer %}
 </footer>
 </body>

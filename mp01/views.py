@@ -6,3 +6,6 @@ from django.views import generic
 class HomeView(TemplateView):
 
     template_name = 'index.html'
+
+def carousel(request):
+    return render(request, 'carousel.html')
