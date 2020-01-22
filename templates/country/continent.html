@@ -1,1 +1,41 @@
 {% extends "../base.html" %}
+
+{% block map %}
+{% include "./con_map.html" %}
+{% endblock map %}
+
+{% block contents %}
+{{ cont }}
+
+
+    <table>
+        {% for i in obj %} 
+        <tr>
+            <td>{{ i }}</td>
+            <td>{{ i.y2000 }}</td>
+            <td>{{ i.y2001 }}</td>
+            <td>{{ i.y2002 }}</td>
+            <td>{{ i.y2003 }}</td>
+            <td>{{ i.y2004 }}</td>
+            <td>{{ i.y2005 }}</td>
+            <td>{{ i.y2006 }}</td>
+            <td>{{ i.y2007 }}</td>
+            <td>{{ i.y2008 }}</td>
+            <td>{{ i.y2009 }}</td>
+            {% comment %} <td>{{ i.y2010 }}</td>
+            <td>{{ i.y2011 }}</td>
+            <td>{{ i.y2012 }}</td>
+            <td>{{ i.y2013 }}</td>
+            <td>{{ i.y2014 }}</td>
+            <td>{{ i.y2015 }}</td>
+            <td>{{ i.y2016 }}</td>
+            <td>{{ i.y2017 }}</td>
+            <td>{{ i.y2018 }}</td>
+            <td>{{ i.y2019 }}</td> {% endcomment %}
+            
+        </tr>
+        {% endfor %}
+        
+    </table>
+
+{% endblock contents %}

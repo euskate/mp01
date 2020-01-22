@@ -3,13 +3,26 @@ from django.db import models
 # Create your models here.
 
 class CountryName(models.Model):
+    objects = models.Manager() # vs code 오류 제거용
+
     code    = models.CharField(primary_key=True, max_length=2)
     c_name  = models.CharField(max_length=30)
 
     def __str__(self):
         return self.c_name
 
+class ContinentName(models.Model):
+    objects = models.Manager() # vs code 오류 제거용
+
+    cont    = models.CharField(primary_key=True, max_length=10)
+    c_name  = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.cont        
+
 class TravelByCountry(models.Model):
+    objects     = models.Manager() # vs code 오류 제거용
+
     id          = models.AutoField(primary_key=True) # 자동생성
     continent   = models.CharField(max_length=10) # 대륙
     country     = models.CharField(max_length=30) # 나라
