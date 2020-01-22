@@ -18,8 +18,10 @@ from django.urls import path, re_path, include
 from mp01 import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),                    # 관리자 페이지
     path('', views.HomeView.as_view(), name='home'),    # 첫 페이지
-    path('member/', include('member.urls')),
-    path('country/', include('country.urls')),
+    path('country/', include('country.urls')),          # 국가별, 대륙별 앱
+    path('member/', include('member.urls')),            # 회원가입 관련 앱
+    # path('magazine/', include('magazine.urls')),        # 매거진 앱
+    # path('board/', include('board.urls')),              # 게시판 앱
 ]

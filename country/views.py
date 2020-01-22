@@ -21,7 +21,7 @@ def top(request):
     # test_coun 변수 : top 3 국가명 (막대 그래프 y축의 라벨명)
     # test_data 변수 : 여행객 수 (막대 그래프의 길이)
 
-    # 여기 아래에다가 차트 구현을 해서 템플릿으로 넘겨 봅시다. (템플릿은 /template/top.html에 있음.)
+    # 여기 아래에다가 차트 구현을 해서 템플릿으로 넘겨 봅시다. (템플릿은 /template/country/top.html에 있음.)
 
 
 
@@ -115,7 +115,7 @@ def country(request, code):
     #     countryData = None
     #     yearData = None
     
-    context = {'countryName':countryName, 'countryData':countryData, 'yearData':yearData, 'commaData':commaData}
+    context = {'code':code, 'countryName':countryName, 'countryData':countryData, 'yearData':yearData, 'commaData':commaData}
 
     return render(request, 'country/country.html', context)
 

@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'     # 언어코드 변경
+LANGUAGE_CODE = 'en-us'     # 언어코드 재설정
 
 TIME_ZONE = 'Asia/Seoul'    # 타임 존 변경
 

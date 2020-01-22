@@ -3,8 +3,9 @@
 <!-- 국가명이 있을 경우 그래프와 테이블을 보여준다.-->
 
 {% if countryName %}
+<img src="/static/img/{{ code }}.png" style="vertical-align: bottom; float: left; ">
 
-<h2>{{ countryName }} 해외여행 연도별 여행객 수</h2>
+<h4>{{ countryName }} 해외여행 연도별 여행객 수</h4>
 {% include "./dashboard.html" %}
 
 <!-- 국가명이 없을 경우 자료가 없음을 알려준다..-->

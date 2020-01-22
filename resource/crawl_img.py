@@ -15,16 +15,9 @@ url = "https://ko.wikipedia.org/wiki/%EA%B5%AD%EA%B0%80%EB%B3%84_%EA%B5%AD%EA%B0
 
 driver.get(url)
 
-for i in range(0,64):
-code = driver.find_element_by_css_selector("/html/body/div[3]/div[3]/div[4]/div/table/tbody/tr[1]/td[2]")
-img = driver.find_element_by_xpath("/html/body/div[3]/div[3]/div[4]/div/table/tbody/tr[1]/td[1]/span/a/img")
-#mw-content-text > div > table > tbody > tr:nth-child(1) > td:nth-child(1) > span > a > img
-#mw-content-text > div > table > tbody > tr:nth-child(3) > td:nth-child(1) > span > a > img
-#mw-content-text > div > table > tbody > tr:nth-child(249) > td:nth-child(1) > span > a > img
-
-filename = code.text
-/html/body/div[3]/div[3]/div[4]/div/table/tbody/tr[3]/td[1]/span/a/img
-
-file = img.get_attribute("src") # 찾은 태그 중에서 src의 값
-
-urllib.request.urlretrieve(file, "./static/img/"+ filename +".png")
+for i in range(1,250):
+    code = driver.find_element_by_css_selector("#mw-content-text > div > table > tbody > tr:nth-child("+str(i)+") > td:nth-child(2)")
+    img  = driver.find_element_by_css_selector("#mw-content-text > div > table > tbody > tr:nth-child("+str(i)+") > td:nth-child(1) > span > a > img")
+    filename = code.text
+    file = img.get_attribute("src") # 찾은 태그 중에서 src의 값
+    urllib.request.urlretrieve(file, "./static/img/"+ filename +".png")
