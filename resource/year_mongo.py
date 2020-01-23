@@ -15,8 +15,8 @@ column = next(rdr) #[컬럼명 읽기]
 
 
 conn = pymongo.MongoClient('192.168.99.100', 32766)
-db = conn.get_database("csv_total") # 있으면 가져오고, 없으면 만들어
-table = db.get_collection("total2") # 있으면 가져오고, 없으면 만들어
+db = conn.get_database("year_total") # 있으면 가져오고, 없으면 만들어
+table = db.get_collection("year") # 있으면 가져오고, 없으면 만들어
 
 # df = pd.read_csv('./resources/korean_chulguk.csv')
 # print(df)

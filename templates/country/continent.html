@@ -1,17 +1,32 @@
 {% extends "../base.html" %}
 
+<!-- 대륙별 템플릿 -->
+
+<!-- 지도 삽입 -->
 {% block map %}
 {% include "./con_map.html" %}
 {% endblock map %}
 
+<!-- 내용 -->
 {% block contents %}
-{{ cont }}
 
-
-    <table>
+<!-- 그래프 -->
+<p style="text-align: center;"><img src="{{ graph1 }}"/></p>
+<style>
+    .table{
+        font-size: smaller;
+    }
+</style>
+    <table class="table table-striped">
+        <tr>
+            <td scope="col">국가명</td>
+        {% for year in yearData %}
+            <th scope="col">{{ year }}</th>
+        {% endfor %}
+        </tr>
         {% for i in obj %} 
         <tr>
-            <td>{{ i }}</td>
+            <th scope="row">{{ i.country }}</th>
             <td>{{ i.y2000 }}</td>
             <td>{{ i.y2001 }}</td>
             <td>{{ i.y2002 }}</td>
@@ -22,7 +37,7 @@
             <td>{{ i.y2007 }}</td>
             <td>{{ i.y2008 }}</td>
             <td>{{ i.y2009 }}</td>
-            {% comment %} <td>{{ i.y2010 }}</td>
+            <td>{{ i.y2010 }}</td>
             <td>{{ i.y2011 }}</td>
             <td>{{ i.y2012 }}</td>
             <td>{{ i.y2013 }}</td>
@@ -31,7 +46,7 @@
             <td>{{ i.y2016 }}</td>
             <td>{{ i.y2017 }}</td>
             <td>{{ i.y2018 }}</td>
-            <td>{{ i.y2019 }}</td> {% endcomment %}
+            <td>{{ i.y2019 }}</td>
             
         </tr>
         {% endfor %}

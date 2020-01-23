@@ -5,8 +5,8 @@ conn_o=oci.connect('admin/1234@192.168.99.100:32764/xe',encoding="euc-kr")
 cursor=conn_o.cursor()
 
 conn=pymongo.MongoClient('192.168.99.100',32766)
-db=conn.get_database("csv_total") # 데이터가 들어가져야 몽고 만들어짐 없으면 db1생성 있으면 가져오는거
-coll=db.get_collection("total1") # collection 있으면 가져오고 없으면 생성 이까지 테이블 만든거 데이터 들어기야 몽고에 들어감
+db=conn.get_database("year_total") # 데이터가 들어가져야 몽고 만들어짐 없으면 db1생성 있으면 가져오는거
+coll=db.get_collection("year") # collection 있으면 가져오고 없으면 생성 이까지 테이블 만든거 데이터 들어기야 몽고에 들어감
 
 data1=coll.find({},{'_id':False})
 for tmp in data1:

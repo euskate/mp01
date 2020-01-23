@@ -8,6 +8,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
 
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -24,12 +25,27 @@
         }
       }
     </style>
+    
+
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/static/css/blog.css" rel="stylesheet">
     {% block head %}
     {% endblock head %}
+    
+    <!-- fonts -->    
+      <!-- title font  -->
+    <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet"> 
+      <!-- 매거진 명언  -->
+      <link href="https://fonts.googleapis.com/css?family=Niconne&display=swap" rel="stylesheet"> 
+      <!-- 매거진 남은 부분 -->
+      <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet"> 
+      <!-- 매거진 메인 부분 -->
+      <link href="https://fonts.googleapis.com/css?family=Gothic+A1&display=swap" rel="stylesheet"> 
+      <!-- 매거진 내용 부분 제목 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet"> 
+
   </head>
   
   
@@ -41,7 +57,7 @@
         {% comment %} <a class="text-muted" href="#">Subscribe</a> {% endcomment %}
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="/">{% block title %}미니프로젝트 
+        <a class="blog-header-logo text-dark" href="/" style="font-family: 'Bangers', cursive;">{% block title %}WHO's NEXT 
         {% endblock title %}</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
@@ -56,18 +72,15 @@
 
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="/country/top">Top 3</a>
+      <a class="p-2 text-muted" href="/country/top/index">Top 3</a>
       <a class="p-2 text-muted" href="/country/asia">Asia</a>
       <a class="p-2 text-muted" href="/country/europe">Europe</a>
       <a class="p-2 text-muted" href="/country/america">America</a>
       <a class="p-2 text-muted" href="/country/oceania">Oceania</a>
       <a class="p-2 text-muted" href="/country/africa">Africa</a>
       <a class="p-2 text-muted" href="/magazine/index">Magazine</a>
-      {% comment %} <a class="p-2 text-muted" href="#">Opinion</a>
-      <a class="p-2 text-muted" href="#">Science</a>
-      <a class="p-2 text-muted" href="#">Health</a>
-      <a class="p-2 text-muted" href="#">Style</a> {% endcomment %}
-      <a class="p-2 text-muted" href="AboutUs">About Us</a>
+      <a class="p-2 text-muted" href="/board">Board</a>
+      <a class="p-2 text-muted" href="/aboutUs">About Us</a>
     </nav>
   </div>
 {% block map %}
@@ -229,12 +242,9 @@
 
 <footer class="blog-footer">
 {% block footer %}
-  <p>Bigdata Season 2<br>Project Team 2</p>
-  <p><a href="#">Back to top</a></p>  
-  <!-- <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-  <p>
-    <a href="#">Back to top</a>
-  </p> -->
+  {% if request.get_full_path == "/" %}
+  <p>Bigdata Season 2<br>Project Team 여행의 불시착</p>
+  {% endif %}
 {% endblock footer %}
 </footer>
 </body>

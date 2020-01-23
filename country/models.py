@@ -47,5 +47,5 @@ class TravelByCountry(models.Model):
     y2018       = models.IntegerField()
     y2019       = models.IntegerField()
 
-    def __str__(self):
-        return self.country
+    # def __str__(self):
+    #     return self.country

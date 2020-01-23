@@ -2,5 +2,10 @@
 
 {% block contents %}
 
+{% for year in yearData %}
+<a href="/country/top/{{ year }}">{{ year }}</a>
+{% endfor %}
+
+<img src="{{ graph1 }}" />
 
 {% endblock contents %}

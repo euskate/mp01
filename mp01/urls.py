@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
+from django.views.generic import TemplateView
 from mp01 import views
 
 urlpatterns = [
@@ -24,5 +25,5 @@ urlpatterns = [
     path('member/', include('member.urls')),            # 회원가입 관련 앱
     path('magazine/', include('magazine.urls')),        # 매거진 앱
     # path('board/', include('board.urls')),              # 게시판 앱
-    path('carousel', views.carousel, name="carousel"),      # 캐러셀 테스트
+    path('aboutUs', TemplateView.as_view(template_name='aboutUs.html')),   # 어바웃 어스
 ]
