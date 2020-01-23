@@ -31,6 +31,7 @@ db = conn_m.get_database("mp01")
 coll = db.get_collection("countrycode")
 
 for cc, cn in list1:
+    if cc == '2자리':pass   첫줄 빼기
     one = dict()
     one['code'] = cc
     one['c_name'] = cn

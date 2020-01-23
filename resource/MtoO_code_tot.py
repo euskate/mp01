@@ -14,6 +14,7 @@ data1 = coll.find({},{'_id':False}) # id값 빼기
 # data1 = coll.find()
 
 for tmp in data1:
+    print(tmp)
     try:
         tmp['2000년'] = int(tmp['2000년'].replace(",",""))
     except Exception as e:

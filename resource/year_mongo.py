@@ -16,7 +16,7 @@ column = next(rdr) #[컬럼명 읽기]
 
 conn = pymongo.MongoClient('192.168.99.100', 32766)
 db = conn.get_database("csv_total") # 있으면 가져오고, 없으면 만들어
-table = db.get_collection("total1") # 있으면 가져오고, 없으면 만들어
+table = db.get_collection("total2") # 있으면 가져오고, 없으면 만들어
 
 # df = pd.read_csv('./resources/korean_chulguk.csv')
 # print(df)
@@ -27,6 +27,8 @@ for line in rdr:
    
     dict1 = dict()    
     for idx, val in enumerate(line):
+        if idx == 0:
+            pass
         dict1[column[idx]] = val
     print(dict1)
 
