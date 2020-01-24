@@ -1,11 +1,41 @@
 {% extends "../base.html" %}
 
+
 {% block contents %}
 
-{% for year in yearData %}
-<a href="/country/top/{{ year }}">{{ year }}</a>
-{% endfor %}
+{% block post %}
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-9 blog-main">
+      <div class="blog-post">
+        
+        <!-- 그래프 -->
+        <p style="text-align: center;">
+          <img src="{{ graph1 }}" />
+        </p>
 
-<img src="{{ graph1 }}" />
+      </div><!-- /.blog-post -->
+    </div><!-- /.blog-main -->
+
+{% endblock post %}
+
+{% block sidebar %}
+
+<aside class="col-md-3 blog-sidebar">
+
+  <div class="p-4 mb-2 bg-light rounded">
+    <h4 class="font-italic">Years</h4>
+    <ol class="list-unstyled mb-0">
+      
+      <!-- 년도 -->
+      {% for year in yearData %}
+      <li><a href="/country/top/{{ year }}">{{ year }}</a></li>
+      {% endfor %}
+
+    </ol>
+  </div>
+</aside><!-- /.blog-sidebar -->
+
+{% endblock sidebar %}
 
 {% endblock contents %}

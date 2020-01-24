@@ -2,37 +2,54 @@
 
 {% block contents %}
 
-    <h3>회원가입</h3>
+<style>
+    .join {
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        
+    }
+
+    label {
+        width: 120px;
+    }
+</style>
+<div class="join" >
+<div class="col-10 text-center" >
+    <h2>회원가입</h2>
     <hr />
-    <!-- html 주석문 -->
-    <form action="/member/auth_join" method="POST">
-    {% csrf_token %}
-        <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text" style="width: 70px;">아이디</span>
-        </div>
-            <input type="text" name="username" class="form-control" />
-        </div>
-        <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text" style="width: 70px;">암  호</span>
-        </div>
-            <input type="password" name="password" class="form-control" />
-        </div>
-        <!-- <p>암호확인 : <input type="password" /></p> -->
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" style="width: 70px;">이  름</span>
-            </div>
-            <input type="text" name="first_name" class="form-control" />
-        </div>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" style="width: 70px;">이메일</span>
-            </div>
-            <input type="text" name="email" class="form-control" /></p>
-        </div>
-        <input type="submit" value="회원가입" class="form-control" />
-    </form>
     
+    <div class="row mt-5">
+        <div class="col-12">
+          {{ error }}
+        </div>
+      </div>
+      
+    
+    <form action="./auth_join" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="form-group ">
+        <label class="form-inline" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
+          placeholder="{{ field.label }}" name="{{ field.name }}" />
+      </div>
+      {% if field.errors %}
+      <span style="color: red">{{ field.errors }}</span>
+      {% endif %}
+      {% endfor %}
+<!-- 
+        <input type="text" name="username" class="form-control" placeholder="아이디" style="margin-bottom: 5px;"/>
+        <input type="password" name="password" class="form-control" placeholder="비밀번호" style="margin-bottom: 5px;"/>
+        <input type="password" name="re_password" class="form-control" placeholder="비밀번호 확인" style="margin-bottom: 5px;"/>
+        <input type="text" name="first_name" class="form-control" placeholder="이름" style="margin-bottom: 5px;"/>
+        <input type="text" name="email" class="form-control" placeholder="e-mail" style="margin-bottom: 5px;"/></p> -->
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+</div>
+</div>
+
 {% endblock contents %}

@@ -27,7 +27,7 @@ def top(request, year="2010"):
 
         print(yearStr)
         # 연도별로 위에서부터 3개만 가져 옴
-        obj = TravelByCountry.objects.all().order_by(yearStrDesc)[1:4]
+        obj = TravelByCountry.objects.all().order_by(yearStrDesc)[1:6]
 
 
         # print(obj.__dict__)
@@ -64,7 +64,9 @@ def top(request, year="2010"):
         font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
         rc('font', family=font_name)
         ### 한글 적용 ###
-        # SUKWON CODE start 
+
+        # 차트 크기 지정
+        plt.figure(figsize=(5,4))
 
         num_bars = len(data)
         positions = range(1, num_bars + 1)
@@ -72,7 +74,7 @@ def top(request, year="2010"):
         plt.yticks(positions, labels)
         plt.xlabel('여행객')
         plt.ylabel('국가')
-        plt.title(year+'년도 Top 3')
+        plt.title(year+'년도 Top 5')
         plt.grid()
         # plt.draw()
 
@@ -82,7 +84,7 @@ def top(request, year="2010"):
         avg_img_url = base64.b64encode(avg_img.getvalue()).decode()
 
         plt.close()
-        # SUKWON CODE end
+        
         context = {'yearData':yearData, 'graph1':'data:;base64,{}'.format(avg_img_url), }
     except Exception as e:
         return redirect('/country/top/2000')
@@ -107,7 +109,9 @@ def continent(request, cont):
     coun = list()
     data = list()
     
+    # 차트 크기 지정
     plt.figure(figsize=(12,8))
+    
     for row in obj:
         data = list()
         # 가져온 data를 딕셔너리로 만든다.
@@ -154,43 +158,43 @@ def continent(request, cont):
 # 국가별로 그래프를 보여주는 뷰
 def country(request, code):
     ### 예외처리 적용 시 해당 부분 주석 해제
-    #try:
+    try:
         # 국가명을 국가코드에서 가져온다.
         ### 예외처리 적용 시 아래 부분 들여쓰기
-    countryName = CountryName.objects.get(code=code)
+        countryName = CountryName.objects.get(code=code)
 
-    yearData = [ i for i in range(2000,2020) ]
-    # yearCol = [ 'y' + str(i) for i in range(2000,2020) ] # 사용 안함.
-    
-    # 빈 리스트에 일치하는 국가명의 DB를 가져온다.
-    countryData = list()
-    obj = TravelByCountry.objects.get(country=countryName)
-    
-    # 가져온 data를 딕셔너리로 만든다.
-    for key, value in obj.__dict__.items():
-        # 해당연도 데이터만 가져와서 변수에 담는다.
-        print(key, value)
-        if 'y' == key[0] :
-            countryData.append(value)
-    
-    # data 형식을 변경하여 변수에 담는다.
-    commaData = [ format(i, ",") + "명" for i in countryData ]
-    
-    # data가 없을 경우 메시지를 바꾼다.
-    for i, v in enumerate(commaData):
-        if v == "0명":
-            commaData[i] = "데이터없음"
+        yearData = [ i for i in range(2000,2020) ]
+        # yearCol = [ 'y' + str(i) for i in range(2000,2020) ] # 사용 안함.
+        
+        # 빈 리스트에 일치하는 국가명의 DB를 가져온다.
+        countryData = list()
+        obj = TravelByCountry.objects.get(country=countryName)
+        
+        # 가져온 data를 딕셔너리로 만든다.
+        for key, value in obj.__dict__.items():
+            # 해당연도 데이터만 가져와서 변수에 담는다.
+            print(key, value)
+            if 'y' == key[0] :
+                countryData.append(value)
+        
+        # data 형식을 변경하여 변수에 담는다.
+        commaData = [ format(i, ",") + "명" for i in countryData ]
+        
+        # data가 없을 경우 메시지를 바꾼다.
+        for i, v in enumerate(commaData):
+            if v == "0명":
+                commaData[i] = "데이터없음"
 
     
 
     ### 예외처리 적용 시 해당 부분 주석 해제
     # 국가명이 없을 경우 국가명 변수에 None을 담는다.
-    # except Exception as e:
-    #     print(e)
-    #     countryName = None
-    #     countryData = None
-    #     yearData = None
-    
+    except Exception as e:
+        print(e)
+        countryName = None
+        countryData = None
+        yearData = None
+        commaData = None
     context = {'code':code, 'countryName':countryName, 'countryData':countryData, 'yearData':yearData, 'commaData':commaData}
 
     return render(request, 'country/country.html', context)

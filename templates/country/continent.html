@@ -11,7 +11,9 @@
 {% block contents %}
 
 <!-- 그래프 -->
-<p style="text-align: center;"><img src="{{ graph1 }}"/></p>
+<p style="text-align: center;">
+    <img src="{{ graph1 }}"/>
+</p>
 <style>
     .table{
         font-size: smaller;
@@ -26,7 +28,7 @@
         </tr>
         {% for i in obj %} 
         <tr>
-            <th scope="row">{{ i.country }}</th>
+            <th scope="row" style="white-space: nowrap;"">{{ i.country }}</th>
             <td>{{ i.y2000 }}</td>
             <td>{{ i.y2001 }}</td>
             <td>{{ i.y2002 }}</td>

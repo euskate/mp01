@@ -15,8 +15,13 @@
       jQuery(document).ready(function () {
         jQuery('#vmap').vectorMap({
           map: 'world_en',
+          
+
+
           backgroundColor: '#333333',
-          color: '#ffffff',
+          borderOpacity: 0.1,
+          borderWidth: 5,          
+          color: '#f4f3f0',
           hoverOpacity: 0.7,
           selectedColor: '#666666',
           enableZoom: true,
@@ -24,6 +29,7 @@
           scaleColors: ['#C8EEFF', '#006491'],
           values: sample_data,
           normalizeFunction: 'polynomial',
+
           onRegionClick: function (event, code) {
             window.location.href = "country/" + code.toUpperCase() },          
         });

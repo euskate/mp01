@@ -4,49 +4,105 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as a_login, logout as a_logout
 
+# form 관련
+from django.views.generic import DetailView
+from django.views.generic.edit import FormView
+from .forms import RegisterForm, LoginForm
+
 # Create your views here.
 
-def auth_join(request):
-    if request.method == 'GET':
-        return render(request, 'member/auth_join.html')
-    elif request.method == 'POST':
-        id = request.POST['username']
-        pw = request.POST['password']
-        na = request.POST['first_name']
-        em = request.POST['email']
+class Auth_join(FormView):
+    template_name = 'member/auth_join.html'
+    form_class = RegisterForm
+    success_url = '/member/auth_index'
+
+    def form_valid(self, form):
 
         obj = User.objects.create_user(
-            username=id,
-            password=pw,
-            first_name=na,
-            email=em
+            username=form.data.get('username'),
+            password=form.data.get('password'),
+            first_name=form.data.get('first_name'),
+            email=form.data.get('email')
         )
         obj.save()
 
-        return redirect('/member/auth_index')
+        return super().form_valid(form)
+    
+# def auth_join(request):
+#     if request.method == 'GET':
+#         return render(request, 'member/auth_join.html')
+#     elif request.method == 'POST':
+#         id = request.POST['username']
+#         pw = request.POST['password']
+#         na = request.POST['first_name']
+#         em = request.POST['email']
+
+#         obj = User.objects.create_user(
+#             username=id,
+#             password=pw,
+#             first_name=na,
+#             email=em
+#         )
+#         obj.save()
+
+#         return redirect('/member/auth_index')
 
 def auth_index(request):
     return render(request, 'member/auth_index.html')
 
+# class Auth_login(FormView):
+#     template_name = 'member/auth_login.html'
+#     form_class = LoginForm
+#     success_url = '../'
+    
+#     def form_valid(self, form):
+        
+#         obj = authenticate(username=form.data.get('username'), password=form.data.get('password'))
+          
+#         if obj:
+#             # 세션에 추가
+#             a_login(request, obj)
+
+#         return super().form_valid(form)
+
 def auth_login(request):
     if request.method == 'GET':
-        return render(request, 'member/auth_login.html')
+        
+        form = LoginForm()
+
     elif request.method == 'POST':
-        id = request.POST['username']
-        pw = request.POST['password']
-
-        # DB에 인증
-        obj = authenticate(request, username=id, password=pw)
-
-        if obj:
-            # 세션에 추가
+    
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            obj = authenticate(
+                username=form.data.get('username'), 
+                password=form.data.get('password')
+                )
             a_login(request, obj)
-        return redirect('/member/auth_index')
+            return redirect('/')
+            
+    return render(request, 'member/auth_login.html', {'form':form})
+        
+# def auth_login(request):
+    
+#     if request.method == 'GET':
+#         return render(request, 'member/auth_login.html')
+#     elif request.method == 'POST':
+#         id = request.POST['username']
+#         pw = request.POST['password']
+
+#         # DB에 인증
+#         obj = authenticate(request, username=id, password=pw)
+
+#         if obj:
+#             # 세션에 추가
+#             a_login(request, obj)
+#         return redirect('/member/auth_index')
 
 def auth_logout(request):
     if request.method == 'GET' or request.method == 'POST':
         a_logout(request)
-        return redirect('/member/auth_index')
+        return redirect('/')
 
 def auth_edit(request):
     if request.method == 'GET':

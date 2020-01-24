@@ -8,12 +8,16 @@
 <h4>{{ countryName }} 해외여행 연도별 여행객 수</h4>
 {% include "./dashboard.html" %}
 
+
+
 <!-- 국가명이 없을 경우 자료가 없음을 알려준다..-->
 {% else %}
 
+<!-- 유튜브 여행 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xRbPAVnqtcs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <!-- 에러 메시지 -->
-<h2>해당 국가의 데이터베이스가 없습니다.</h2>
 
+<h3>해당 국가의 데이터베이스가 없습니다.</h3>
 {% endif %}
 
 <script type="text/javascript">
