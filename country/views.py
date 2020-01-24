@@ -52,8 +52,11 @@ def top(request, year="2010"):
         print(labels)
         print(data)
 
+        # 역순 바꾸기
         labels.reverse()
         data.reverse()
+        # data /= 1000
+        print(data)
 
         # labels 변수 : top 3 국가명 (막대 그래프 y축의 라벨명)
         # data 변수 : 여행객 수 (막대 그래프의 길이)
@@ -66,11 +69,16 @@ def top(request, year="2010"):
         ### 한글 적용 ###
 
         # 차트 크기 지정
-        plt.figure(figsize=(5,4))
+        plt.figure(figsize=(6,4))
 
         num_bars = len(data)
         positions = range(1, num_bars + 1)
-        plt.barh(positions, data, align='center')
+        colors = ['salmon', 'orange', 'cadetblue', 'skyblue', 'coral']
+
+
+        plt.barh(positions, data, align='center', color=colors, label=labels)
+        
+        
         plt.yticks(positions, labels)
         plt.xlabel('여행객')
         plt.ylabel('국가')

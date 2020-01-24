@@ -185,9 +185,9 @@
 
 <footer class="blog-footer">
   {% block footer %}
-  {% if request.get_full_path == "/" %}
+  {% comment %} {% if request.get_full_path == "/" %} {% endcomment %}
   <p>Bigdata Season 2<br>Project Team 여행의 불시착</p>
-  {% endif %}
+  {% comment %} {% endif %} {% endcomment %}
   {% endblock footer %}
 </footer>
 </body>

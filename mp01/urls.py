@@ -24,6 +24,6 @@ urlpatterns = [
     path('country/', include('country.urls')),          # 국가별, 대륙별 앱
     path('member/', include('member.urls')),            # 회원가입 관련 앱
     path('magazine/', include('magazine.urls')),        # 매거진 앱
-    # path('board/', include('board.urls')),              # 게시판 앱
+    path('board/', include('board.urls')),              # 게시판 앱
     path('aboutUs', TemplateView.as_view(template_name='aboutUs.html')),   # 어바웃 어스
 ]

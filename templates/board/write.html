@@ -1,0 +1,68 @@
+
+{% extends "../base.html" %}
+
+{% block contents %}
+    
+{% if request.user.is_authenticated %}
+
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+
+    <form action="/board/write" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container">
+        <h3>Write</h3>
+        <div class="form-inline" style="margin: 5px;">
+            <label style="margin-right: 5px;">글제목</label>
+            <input type="text" style="width: 400px" name="title" class="form-control">
+        </div>
+
+        <div class="form-inline" style="margin: 5px;">
+            <div class="form-group">
+                <label style="margin-right: 5px;">글내용</label style="margin-right: 5px;">
+            </div>
+            <div class="form-group" style="width: 720px;">
+                <textarea id="summernote" rows="6" style="width: 400px" name="contents" class="form-control"></textarea>
+            </div>
+        </div>
+
+        {% comment %} <div class="form-inline" style="margin: 5px;">
+            <label style="margin-right: 5px;">작성자</label>
+            <input type="text" style="width: 400px" name="writer" class="form-control">
+        </div> {% endcomment %}
+
+        <div class="form-inline" style="margin: 5px;">
+            <label style="margin-right: 5px;">이미지</label>
+            <input type="file" style="width: 400px" name="img" class="form-control">
+        </div>
+
+        <div class="form-inline" style="margin: 5px;">
+            <input type="submit" class="btn btn-primary" value="글쓰기" style="margin-right: 5px;">
+            <a href="/board" class="btn btn-secondary">목록으로</a>
+        </div>
+    </div>
+    </form>
+    <script>
+        $(function(){
+            $('#summernote').summernote({
+                tabsize: 2,
+                height: 300,
+            })
+        })
+
+    </script>
+    
+    {% else %}
+
+    게시판 글쓰기는 로그인 후에 사용 가능합니다.
+    
+    {% endif %}
+    
+
+{% endblock contents %}

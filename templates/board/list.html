@@ -1,0 +1,65 @@
+{% extends "../base.html" %}
+
+{% block contents %}
+    
+    <div class="container">
+        <h3>게시판 목록</h3>
+        <a href="/board/write" class="btn btn-primary">글쓰기</a>
+
+        <!-- 검색창 -->
+        <form action="/board" method="get" id="form">
+            <div class="form-inline row justify-content-end">
+                <select name="select" class="form-control"  id="">
+                    <option name="sTitle" value="1">제목</option>
+                    <option name="sContent" value="2">내용</option>
+                    <option name="sWriter" value="3">작성자</option>
+                </select>
+                <input type="text" class="form-control" name="txt" placeholder="검색어" />&nbsp;
+                <input type="submit" class="btn btn-success" value="검색" />
+            </div>
+        </form>
+
+
+        <table class="table">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>조회수</th>
+                <th>날짜</th>
+            </tr>
+            {% for one in list %}
+            <tr>
+                <td>{{ one.0 }}</td>
+                <td><a href="/board/content?no={{ one.0 }}">{{ one.1 }}</a></td>
+                <td>{{ one.2 }}</td>
+                <td>{{ one.3 }}</td>
+                <td>{{ one.4 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        <!-- Bootstrap Pagination -->
+        <!-- 중앙정렬 -->
+        <div class="row justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% for i in pages %}
+                <li class="page-item"><a class="page-link" href="/board?page={{i}}&txt={{request.GET.txt}}">{{i}}</a></li>
+                  
+                {% endfor %}
+            </ul>
+          </nav>
+        </div>
+
+    </div>
+    <script>
+        document.getElementById('form').select.onchange = function(){
+            console.log(document.getElementById('form').select.value)
+            //location.href = document.getElementById('form').select.value
+        }
+    </script>
+</body>
+</html>
+
+{% endblock %}
