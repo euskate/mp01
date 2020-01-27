@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Table1(models.Model):
+class Board1(models.Model):
     objects  = models.Manager() #vs code 오류 제거용
 
     no      = models.AutoField(primary_key=True)
