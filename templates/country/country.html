@@ -1,24 +1,43 @@
 {% extends "../base.html" %}
 {% block contents %}
-<!-- 국가명이 있을 경우 그래프와 테이블을 보여준다.-->
+    <!-- 국가명이 있을 경우 그래프와 테이블을 보여준다.-->
 
-{% if countryName %}
-<img src="/static/img/{{ code }}.png" style="vertical-align: bottom; float: left; ">
+    {% if yearData %}
+        <img src="/static/img/{{ code }}.png" style="vertical-align: bottom; float: left; ">
 
-<h4>{{ countryName }} 해외여행 연도별 여행객 수</h4>
-{% include "./dashboard.html" %}
+        <h4>{{ countryName }} 해외여행 연도별 여행객 수</h4>
+        {% include "./dashboard.html" %}
 
 
 
-<!-- 국가명이 없을 경우 자료가 없음을 알려준다..-->
-{% else %}
+    <!-- 국가명이 없을 경우 자료가 없음을 알려준다..-->
+    {% else %}
 
-<!-- 유튜브 여행 -->
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xRbPAVnqtcs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<!-- 에러 메시지 -->
+        <!-- 유튜브 여행 -->
+        <div align="middle">
+<iframe width="800px"; height="400px;"  src="https://www.youtube.com/embed/xRbPAVnqtcs?&amp;autoplay=1&amp;loop=1;playlist=xRbPAVnqtcs" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="" ></iframe>
+</div>
+        <!-- 에러 메시지 -->
 
-<h3>해당 국가의 데이터베이스가 없습니다.</h3>
-{% endif %}
+        <p>죄송해요! 아직 {{ countryName }}의 데이터를 충분히 수집하지 못 했어요.. 조금만 더 기다려 주세요!</p>
+
+        <p>데이터는 <a href="https://kto.visitkorea.or.kr/kor/notice/data/statis/profit/board/view.kto?id=423699&isNotice=true&instanceId=294&rnum=0">한국관광공사의 통계자료</a>를 이용하였습니다.</p>
+
+        <p>'넥스트'여러분! 설은 잘 보내셨나요? WHO'S NEXT는 여러분의 목소리가 듣고싶어요! 다들 올 추석 여행 각인거 아시죠? 미리미리 비행기 표를 준비하시라고 저희가 추석에 가기 좋은 나라를 몇가지 준비해 보았어요! 여러분들은 어느 나라가 제일 가고 싶으세요? 투표 해주세요><</p>
+        <!-- <input type="radio" name="choice" id="choice1" value="" />
+        <label for="choice1">{{ country.c_name }}</label><br /> -->
+        
+        <form action="/country/vote" method="post">
+            {% csrf_token %}
+            {% for country in countryList %}
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ country.code }}" />
+                <label for="choice{{ forloop.counter }}">{{ country.c_name }}</label><br />
+            {% endfor %}
+            <input type="submit" value="가고 싶은나라 투표하기" />
+        </form>
+
+
+    {% endif %}
 
 <script type="text/javascript">
     var countryData = "{{ countryData }}";

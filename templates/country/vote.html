@@ -1,0 +1,16 @@
+{% extends "../base.html" %}
+
+<!-- 내용 -->
+{% block contents %}
+<p><h3>{{ voteCountry }}에 투표하셨네요! 당신의 여행을 기대할게요!</h3></p>
+
+<p>투표결과</p>
+
+<ul>
+{% for i in obj %}
+    <li>{{ i.c_name }} - {{ i.vote }}표</li>
+{% endfor %}
+</ul>
+
+
+{% endblock contents %}

@@ -69,14 +69,17 @@ def top(request, year="2010"):
         ### 한글 적용 ###
 
         # 차트 크기 지정
-        plt.figure(figsize=(6,4))
+        plt.figure(figsize=(7,5))
+        colors = ['salmon', 'orange', 'cadetblue', 'skyblue', 'coral']
 
         num_bars = len(data)
         positions = range(1, num_bars + 1)
-        colors = ['salmon', 'orange', 'cadetblue', 'skyblue', 'coral']
 
 
         plt.barh(positions, data, align='center', color=colors, label=labels)
+        
+        for i, v in enumerate(data):
+            plt.text(v, i + 0.9, str(v),)
         
         
         plt.yticks(positions, labels)
@@ -157,11 +160,34 @@ def continent(request, cont):
 
     plt.close()
 
-    context = {'yearData':yearData, 'cont':contName, 'obj':obj, 'graph1':'data:;base64,{}'.format(avg_img_url) }
+    context = {
+        'yearData':yearData, 
+        'cont':contName, 
+        'obj':obj,
+        'graph1':'data:;base64,{}'.format(avg_img_url) }
 
     return render(request, 'country/continent.html', context )
 
 
+def vote(request):
+    if request.method == 'POST':
+        # try:
+        vote = request.POST['choice']
+        voteCountry = CountryName.objects.get(code=vote)
+        obj = CountryName.objects.all()
+
+        voteCountry.vote = voteCountry.vote + 1
+        print(voteCountry.vote)
+        voteCountry.save()
+
+        error = ""
+        # except Exception as e:
+        #     error = "투표할 나라를 선택하세요."
+        #     return redirect('vote')
+        
+        
+    context = {'voteCountry': voteCountry, 'obj':obj, 'error':error}
+    return render(request, 'country/vote.html', context)
 
 # 국가별로 그래프를 보여주는 뷰
 def country(request, code):
@@ -192,18 +218,23 @@ def country(request, code):
         for i, v in enumerate(commaData):
             if v == "0명":
                 commaData[i] = "데이터없음"
+        
+        context = {'code':code, 'countryName':countryName, 'countryData':countryData, 'yearData':yearData, 'commaData':commaData }
+
 
     
 
     ### 예외처리 적용 시 해당 부분 주석 해제
     # 국가명이 없을 경우 국가명 변수에 None을 담는다.
     except Exception as e:
-        print(e)
-        countryName = None
+        # print(e)
+        countryName = CountryName.objects.get(code=code)
         countryData = None
         yearData = None
         commaData = None
-    context = {'code':code, 'countryName':countryName, 'countryData':countryData, 'yearData':yearData, 'commaData':commaData}
+        countryList = CountryName.objects.order_by('c_name')
+
+        context = {'code':code, 'countryName':countryName, 'countryData':countryData, 'yearData':yearData, 'commaData':commaData, 'countryList':countryList }
 
     return render(request, 'country/country.html', context)
 
