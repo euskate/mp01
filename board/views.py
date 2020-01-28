@@ -90,7 +90,7 @@ def content(request):
         # 가져오기
         sql = """
             SELECT
-                NO, TITLE, CONTENT, WRITER, HIT, TO_CHAR(REGDATE, 'YYYY-MM-DD HH:MI:SS'), B_IMG
+                NO, TITLE, CONTENT, WRITER, HIT, TO_CHAR(REGDATE, 'YYYY-MM-DD HH:MI:SS'), BOARD_IMG
             FROM
                 BOARD_BOARD1
             WHERE
@@ -221,8 +221,8 @@ def write(request):
         try:
             # print(arr)
             sql = """
-                INSERT INTO BOARD_BOARD1(TITLE, CONTENT, WRITER, HIT, REGDATE, B_IMG)
-                VALUES(%s, %s, %s, 234, SYSDATE, %s)
+                INSERT INTO BOARD_BOARD1(TITLE, CONTENT, WRITER, HIT, REGDATE, BOARD_IMG)
+                VALUES(%s, %s, %s, 1, SYSDATE, %s)
             """
             cursor.execute(sql, arr)
         except Exception as e:

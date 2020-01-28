@@ -25,7 +25,7 @@ def top(request, year="2010"):
         yearStr = 'y' + year
         yearStrDesc = '-y' + year
 
-        print(yearStr)
+        # print(yearStr)
         # 연도별로 위에서부터 3개만 가져 옴
         obj = TravelByCountry.objects.all().order_by(yearStrDesc)[1:6]
 
@@ -46,17 +46,17 @@ def top(request, year="2010"):
             # print(row[yearStr])
             data.append(row[yearStr])
         for row in obj.values('country'):
-            print(row)
+            # print(row)
             labels.append(row['country'])
         
-        print(labels)
-        print(data)
+        # print(labels)
+        # print(data)
 
         # 역순 바꾸기
         labels.reverse()
         data.reverse()
         # data /= 1000
-        print(data)
+        # print(data)
 
         # labels 변수 : top 3 국가명 (막대 그래프 y축의 라벨명)
         # data 변수 : 여행객 수 (막대 그래프의 길이)
@@ -123,10 +123,10 @@ def continent(request, cont):
     for row in obj:
         data = list()
         # 가져온 data를 딕셔너리로 만든다.
-        print(row.country)
+        # print(row.country)
         for key, value in row.__dict__.items():
             # 해당연도 데이터만 가져와서 변수에 담는다.
-            print(key, value)
+            # print(key, value)
             if 'y' == key[0] :
                 data.append(value)
         plt.plot( yearData, data, label=row.country )
@@ -181,7 +181,7 @@ def country(request, code):
         # 가져온 data를 딕셔너리로 만든다.
         for key, value in obj.__dict__.items():
             # 해당연도 데이터만 가져와서 변수에 담는다.
-            print(key, value)
+            # print(key, value)
             if 'y' == key[0] :
                 countryData.append(value)
         
