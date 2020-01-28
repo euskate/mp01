@@ -14,7 +14,7 @@ from .forms import RegisterForm, LoginForm
 class Auth_join(FormView):
     template_name = 'member/auth_join.html'
     form_class = RegisterForm
-    success_url = '/member/auth_index'
+    success_url = '/'
 
     def form_valid(self, form):
 
