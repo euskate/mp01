@@ -1,3 +1,10 @@
+## 2019. 1. 28.
+- member app -> 회원가입 완료시 홈페이지로
+- board > 글목록 시 경로 에러 수정
+- top 3 > top 5
+- magazine index 폰트 변경
+
+
 ## 2019. 1. 24.
 - member app 수정
 - board app 추가 (table1 추가)
